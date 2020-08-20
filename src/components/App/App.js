@@ -1,24 +1,28 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+// import '../../index.scss'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 
-import DiceImage from '../DiceImage/DiceImage'
+// import DiceImage from '../DiceImage/DiceImage'
+
+import HomePage from '../../routes/HomePage'
 
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
-      numberOfDice: null,
-      rolls: [],
-      rollSum: null,
+      // numberOfDice: null,
+      // rolls: [],
+      // rollSum: null,
       user: null,
       msgAlerts: []
     }
@@ -32,19 +36,19 @@ class App extends Component {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
 
-  diceRoll = numberOfDice => {
-    const rolls = []
-    let rollSum = 0
-    for (let i = 0; i < numberOfDice; i++) {
-      rolls[i] = Math.floor(Math.random() * 6) + 1
-      rollSum += rolls[i]
-    }
-    this.setState({
-      numberOfDice,
-      rolls,
-      rollSum
-    })
-  }
+  // diceRoll = numberOfDice => {
+  //   const rolls = []
+  //   let rollSum = 0
+  //   for (let i = 0; i < numberOfDice; i++) {
+  //     rolls[i] = Math.floor(Math.random() * 6) + 1
+  //     rollSum += rolls[i]
+  //   }
+  //   this.setState({
+  //     numberOfDice,
+  //     rolls,
+  //     rollSum
+  //   })
+  // }
 
   render () {
     const { msgAlerts, user } = this.state
@@ -61,37 +65,25 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
+          <Switch>
+            <Route exact path='/' render={() => (
+              <HomePage />
+            )} />
+            <Route path='/sign-up' render={() => (
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <Route path='/sign-in' render={() => (
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+              <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} path='/change-password' render={() => (
+              <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )} />
+          </Switch>
         </main>
-        <div className="buttons">
-          {[1, 2, 3, 4, 5].map(number => {
-            const text = number === 1 ? 'die' : 'dice'
-            return (
-              <button
-                key={number}
-                onClick={() => this.diceRoll(number)}
-                className='button'
-              >
-                {number} {text}
-              </button>
-            )
-          })}
-          <br/>
-          {
-            this.state.rolls.map((roll, index) => <DiceImage roll={roll} key={index} />)
-          }
-        </div>
+        <Footer user={user} />
       </Fragment>
     )
   }
