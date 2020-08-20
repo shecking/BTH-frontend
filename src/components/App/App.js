@@ -20,9 +20,6 @@ class App extends Component {
     super()
 
     this.state = {
-      // numberOfDice: null,
-      // rolls: [],
-      // rollSum: null,
       user: null,
       msgAlerts: []
     }
@@ -35,20 +32,6 @@ class App extends Component {
   msgAlert = ({ heading, message, variant }) => {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
-
-  // diceRoll = numberOfDice => {
-  //   const rolls = []
-  //   let rollSum = 0
-  //   for (let i = 0; i < numberOfDice; i++) {
-  //     rolls[i] = Math.floor(Math.random() * 6) + 1
-  //     rollSum += rolls[i]
-  //   }
-  //   this.setState({
-  //     numberOfDice,
-  //     rolls,
-  //     rollSum
-  //   })
-  // }
 
   render () {
     const { msgAlerts, user } = this.state
