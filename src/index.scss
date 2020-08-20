@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+.boxer-column {
+  float: left;
+  padding: 5px;
+  width: 25%;
+}
+
+.house-column {
+  float: left;
+  padding: 5px;
+  width: 100%;
+}
