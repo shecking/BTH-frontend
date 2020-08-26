@@ -7,7 +7,6 @@ class HouseContainer extends Component {
     super()
     // Describing the initial state of the house die
     this.state = {
-      player: 'house',
       pips: [0],
       hold: [false],
       user: null,
@@ -17,11 +16,9 @@ class HouseContainer extends Component {
 
   rollDie = () => {
     const newPips = [...this.state.pips]
-    for (let i = 0; i < 5; i++) {
-      if (!this.state.hold[i]) {
-        const num = Math.floor(Math.random() * 6)
-        newPips[i] = num
-      }
+    if (!this.state.hold[0]) {
+      const num = Math.floor(Math.random() * 6)
+      newPips[0] = num
     }
     this.setState({ pips: newPips })
   }
@@ -36,7 +33,7 @@ class HouseContainer extends Component {
   render () {
     return (
       <div className='house-container'>
-        <h3>This is the house area</h3>
+        <h3>This is the house die</h3>
         <button onClick={this.rollDie}>Roll</button>
         <div className='house-die'>
           <div className='house-column'>

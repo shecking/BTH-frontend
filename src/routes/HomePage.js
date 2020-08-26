@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 // import '../index.scss'
 
-import HouseContainer from '../containers/HouseContainer'
-import BoxerContainer from '../containers/BoxerContainer'
+import GameContainer from '../containers/GameContainer'
 
 class HomePage extends Component {
   render () {
     return (
       <div>
         <div className='App'>
-          <HouseContainer />
-          <BoxerContainer />
+          <GameContainer />
         </div>
       </div>
     )

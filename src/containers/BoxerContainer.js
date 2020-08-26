@@ -8,7 +8,6 @@ class BoxerContainer extends Component {
     super()
     // Describing the initial state of the boxer dice
     this.state = {
-      player: 'boxer',
       pips: [0, 0, 0, 0],
       hold: [false, false, false, false],
       user: null,
@@ -42,7 +41,7 @@ class BoxerContainer extends Component {
   render () {
     return (
       <div className='boxer-container'>
-        <h3>This is the boxer area</h3>
+        <h3>These are the boxer&apos;s dice</h3>
         <button onClick={this.rollDice}>Roll</button>
         <div className='boxer-dice'>
           <div className='boxer-column'>
