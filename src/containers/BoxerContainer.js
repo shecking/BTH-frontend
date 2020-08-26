@@ -8,6 +8,7 @@ class BoxerContainer extends Component {
     super()
     // Describing the initial state of the boxer dice
     this.state = {
+      player: 'boxer',
       pips: [0, 0, 0, 0],
       hold: [false, false, false, false],
       user: null,
@@ -30,7 +31,12 @@ class BoxerContainer extends Component {
     const holds = this.state.hold
     holds[id] = !holds[id]
     this.setState({ hold: holds })
-    console.log('held')
+    // console.log for testing
+    // if (this.state.hold[id]) {
+    //   console.log(this.state.hold, 'die held')
+    // } else {
+    //   console.log(this.state.hold, 'die freed')
+    // }
   }
 
   render () {

@@ -16,7 +16,7 @@ class Dice extends Component {
     const diceImages = [one, two, three, four, five, six]
     return (
       <div className={`dice-container ${this.props.hold ? 'hold' : 'free'}`}>
-        <button>
+        <button className="die-button">
           <img src={diceImages[this.props.pips]} onClick={() => this.holdDice()} />
         </button>
       </div>

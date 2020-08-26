@@ -7,6 +7,7 @@ class HouseContainer extends Component {
     super()
     // Describing the initial state of the house die
     this.state = {
+      player: 'house',
       pips: [0],
       hold: [false],
       user: null,
@@ -25,11 +26,11 @@ class HouseContainer extends Component {
     this.setState({ pips: newPips })
   }
 
+  // Hold logic (not needed for house die)
   toggleDiceHold = (id) => {
     const holds = this.state.hold
     holds[id] = !holds[id]
     this.setState({ hold: holds })
-    console.log('held')
   }
 
   render () {

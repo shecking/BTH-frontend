@@ -1,13 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
 
 .boxer-column {
+  border-radius: 13px;
   float: left;
   padding: 5px;
   width: 25%;
+  .hold {
+    border: 10px solid #f00;
+  }
+  .free {
+    border: 10px solid #008000;
+  }
 }
 
 .house-column {
   float: left;
   padding: 5px;
   width: 100%;
+}
+
+.die-button {
+  border-radius: 13px;
 }
